@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     # thirdparty apps
     'crispy_forms',
 
@@ -46,10 +50,10 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
 ]
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 AUTH_USER_MODEL = 'users.CustomUser'
-
+ACCOUNT_SESSION_REMEMBER = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+SITE_ID = 1
 
 ROOT_URLCONF = 'config.urls'
 
@@ -128,7 +133,8 @@ USE_L10N = True
 USE_TZ = True
 
 LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -145,3 +151,14 @@ STATICFILES_FINDER = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'users.CustomUser'
+SITE_ID = 1
+AUTHENTICATION_BACKENDS = [
+
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

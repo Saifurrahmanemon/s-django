@@ -2,9 +2,9 @@
 <h1>HomePage</h1>
 <img class="bookcover" src="{% static "images/tiger.jpg" %}" alt="tiger"> {% if user.is_authenticated %} <br />
 Hi {{user.username}} <br />
-<a href="{% url 'logout' %}">Log Out</a>
+<a href="{% url 'account_logout' %}">Log Out</a>
 {% else %}
 <p>You are not logged in</p>
-<a href="{% url 'login' %}">Log in</a> <br />
-<a href="{% url 'signup' %}">Sign Up</a>
+<a href="{% url 'account_login' %}">Log in</a> <br />
+<a href="{% url 'account_signup' %}">Sign Up</a>
 {% endif %} {% endblock content %}

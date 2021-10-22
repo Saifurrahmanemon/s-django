@@ -1,3 +1,7 @@
 {
     "prettier.printWidth": 1000
 }
+
+{
+    "[html]": "editor.defaultFormatter": "null"
+},

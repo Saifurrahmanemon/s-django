@@ -58,7 +58,7 @@ INSTALLED_APPS = [
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 AUTH_USER_MODEL = 'users.CustomUser'
-ACCOUNT_SESSION_REMEMBER = True
+
 DEFAULT_FROM_EMAIL = 'admin@DBookstore.com'
 
 MIDDLEWARE = [

@@ -1,3 +1,7 @@
 {
-    "diffEditor.wordWrap": "off"
+    "diffEditor.wordWrap": "off",
+    "prettier.printWidth": 0,
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
 }

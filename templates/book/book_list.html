@@ -1,4 +1,17 @@
-{% extends "_base.html" %} {% block title %} Books {% endblock title %}] {% block content %} {% for book in book_list %}
+{% extends "_base.html" %}
+
+{% block title %} Books {% endblock title %}
+
+{% block content %}
+
+{% if perms.books.special_status %}
+<h4 class="font-weight-bold"> Hi {{user.username}} you have Purchase all books</h4>
+{% else %}
+<a href="{% url 'orders' %}" class="btn btn-success">Purchase All Books</a>
+{% endif %}
+
+{% for book in book_list %}
+
 <div>
   <h2>
     <a href="{{ book.get_absolute_url }}">{{book.title}}</a>

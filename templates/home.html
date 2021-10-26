@@ -1,14 +1,19 @@
-{% extends "_base.html" %} 
-{% load static %} {% block title %} Homepage {% endblock title %} 
+{% extends "_base.html" %}
+{% load static %} {% block title %} Homepage {% endblock title %}
 {% block content %}
 <h1>HomePage</h1>
 <!-- <img class="bookcover" src="{% static "images/tiger.jpg" %}" alt="tiger">  -->
 
 {% if user.is_authenticated %} <br />
-Hi {{user.username}} <br />
+
+<form class="form-inline mt-2 mt-md-0" method="get" action="{% url 'search_results' %}">
+    <input type="text" name="q" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
+</form>
+
+Hi {{user.email}} <br />
 <a href="{% url 'account_logout' %}">Log Out</a>
 {% else %}
 <p>You are not logged in</p>
-<a href="{% url 'account_login' %}">Log in</a> <br />
-<a href="{% url 'account_signup' %}">Sign Up</a>
+<a href="{% url 'account_login' %}">Please Log in</a> <br />
+<a href="{% url 'account_signup' %}">or Sign Up</a>
 {% endif %} {% endblock content %}

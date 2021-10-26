@@ -2,7 +2,7 @@
 
 {% block title %} Sign Up {% endblock title %}
 {% block content %}
-<div class="col-md-4 col-md-off text-center align-content-center container-fluid">
+<div class="col-md-4 col-md-off text-center align-content-center container-fluid border-top">
   <h1>Sign Up</h1>
   <form class='font-weight-bold' action="" method="post">
     {% csrf_token %} {{form |crispy}}

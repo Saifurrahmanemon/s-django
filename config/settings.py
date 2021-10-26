@@ -42,15 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    # third-party apps
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     # 'allauth.socialaccount.providers.google',
     # 'allauth.socialaccount.providers.facebook',
     # 'allauth.socialaccount.providers.twitter',
-    # thirdparty apps
     'crispy_forms',
-
+    'debug_toolbar',
     # localapps
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
@@ -64,14 +64,22 @@ AUTH_USER_MODEL = 'users.CustomUser'
 DEFAULT_FROM_EMAIL = 'admin@DBookstore.com'
 
 MIDDLEWARE = [
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+# for cache middleware
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 604800
+CACHE_MIDDLEWARE_KEY_PREFIX = ''
+
+
 SITE_ID = 1
 
 ROOT_URLCONF = 'config.urls'
@@ -184,3 +192,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # settings for stripe
 STRIPE_TEST_PUBLISHABLE_KEY = os.environ.get('STRIPE_TEST_PUBLISHABLE_KEY')
 STRIPE_TEST_SECRET_KEY = os.environ.get("STRIPE_TEST_SECRET_KEY")
+
+# for django-debug-toolbar
+INTERNAL_IPS = [
+
+    '127.0.0.1',
+
+]

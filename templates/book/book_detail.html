@@ -7,13 +7,17 @@
   <h2><a href="">{{book.title}}</a></h2>
   <p>Author: {{book.author}}</p>
   <p>Price: {{book.price}}</p>
+  <p>published_at {{book.publication_date}}</p>
 </div>
 
 <div>
   <h3>Reviews</h3>
   <ul>
     {% for review in book.reviews.all %}
-    <li>{{review.review}} ({{review.author}})</li>
+    <li>{{review.review}} <br>
+      <p>({{review.author}})</p>
+      <p>{{review.date_created}}</p>
+    </li>
     {% endfor %}
   </ul>
 </div>

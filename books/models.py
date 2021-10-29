@@ -1,8 +1,9 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth import get_user_model
-# Create your models here.
 import uuid
+import datetime
+# this is our published books model
 
 
 class Book(models.Model):
@@ -14,12 +15,14 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=6, decimal_places=2)
+    publication_date = models.DateField(default=datetime.date.today ,verbose_name='book published date')
     cover = models.ImageField(upload_to='covers/', blank=True)
-    
+
     class Meta:
         permissions = [
-            ('special_status',"Can read all books"),
+            ('special_status', "Can read all books"),
         ]
+
     def __str__(self):
         return self.title
 
@@ -39,6 +42,10 @@ class Review(models.Model):
         get_user_model(),
         on_delete=models.CASCADE
     )
+    rating = models.IntegerField(
+        blank=True, null=True, help_text='the ratings from reviewers')
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_edited = models.DateTimeField(null=True)
 
     def __str__(self):
         return self.review

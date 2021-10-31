@@ -3,13 +3,64 @@
 {% block content %}
 
 
-<div class=" col-md-4 col-md-off text-center align-content-center container-fluid border-top">
-  <h1>Log In</h1>
-  <form class='font-weight-bold' action="" method="post">
-    {% csrf_token %} {{form | crispy}}
-    <button type="submit" class="w-100 btn btn-outline-primary font-weight-bold">Log
-      In</button>
-  </form>
-  <a class="font-weight-bold" href="{% url 'account_reset_password' %}">Forgot Password?</a>
+<!-- Modal -->
+<div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <!--Content-->
+    <div class="modal-content form-elegant">
+      <!--Header-->
+      <div class="modal-header text-center">
+        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Sign in</strong>
+        </h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body mx-4">
+        <!--Body-->
+        <div>
+          <form class='font-weight-bold' action="" method="post">
+            {% csrf_token %} {{form | crispy}}
+            <div class="text-center mb-3">
+              <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Sign in</button>
+            </div>
+          </form>
+        </div>
+        <p class="font-small blue-text d-flex justify-content-end">Forgot <a href="{% url 'account_reset_password' %}"
+            class="blue-text ml-1">
+            Password?</a></p>
+
+        <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign in
+          with:</p>
+
+        <div class="row my-3 d-flex justify-content-center">
+          <!--Facebook-->
+          <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i
+              class="fab fa-facebook-f text-center"></i></button>
+          <!--Twitter-->
+          <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i
+              class="fab fa-twitter"></i></button>
+          <!--Google +-->
+          <button type="button" class="btn btn-white btn-rounded z-depth-1a"><i
+              class="fab fa-google-plus-g"></i></button>
+        </div>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer mx-5 pt-3 mb-1">
+        <p class="font-small grey-text d-flex justify-content-end">Not a member? <a href="{% url 'account_signup' %}"
+            class="blue-text ml-1">
+            Sign Up</a></p>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Modal -->
+
+<div class="text-center">
+  <a href="" class="btn blue-gradient btn-rounded" data-toggle="modal" data-target="#elegantModalForm">Launch Login
+    Form</a>
 </div>
 {% endblock content %}

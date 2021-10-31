@@ -1,8 +1,8 @@
-from django.db import models
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Q
 from django.views.generic import ListView, DetailView
 from .models import Book
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from .utils import average_rating
 
 
 class BookListView(LoginRequiredMixin, ListView):
@@ -28,4 +28,3 @@ class SearchResultsListView(ListView):
         query = self.request.GET.get('q')
         return Book.objects.filter(
             Q(title__icontains=query) | Q(title__icontains=query))
- 

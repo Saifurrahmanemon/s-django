@@ -2,11 +2,62 @@
 
 {% block title %} Sign Up {% endblock title %}
 {% block content %}
-<div class="col-md-4 col-md-off text-center align-content-center container-fluid border-top">
-  <h1>Sign Up</h1>
-  <form class='font-weight-bold' action="" method="post">
-    {% csrf_token %} {{form |crispy}}
-    <button class="w-100 btn btn-outline-success font-weight-bold" type="submit">Sign Up</button>
-  </form>
+<!-- Modal -->
+<div class="modal fade" id="elegantModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <!--Content-->
+    <div class="modal-content form-elegant">
+      <!--Header-->
+      <div class="modal-header text-center">
+        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Sign Up</strong>
+        </h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body mx-4">
+        <!--Body-->
+        <div>
+          <form class='font-weight-bold' action="" method="post">
+            {% csrf_token %} {{form | crispy}}
+            <div class="text-center mb-3">
+              <button type="submit" class="btn peach-gradient btn-block btn-rounded z-depth-1a">Sign Up</button>
+            </div>
+          </form>
+        </div>
+
+
+        <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign Up
+          with:</p>
+
+        <div class="row my-3 d-flex justify-content-center">
+          <!--Facebook-->
+          <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i
+              class="fab fa-facebook-f text-center"></i></button>
+          <!--Twitter-->
+          <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i
+              class="fab fa-twitter"></i></button>
+          <!--Google +-->
+          <button type="button" class="btn btn-white btn-rounded z-depth-1a"><i
+              class="fab fa-google-plus-g"></i></button>
+        </div>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer mx-5 pt-3 mb-1">
+        <p class="font-small grey-text d-flex justify-content-end">Already a member? <a href="{% url 'account_login' %}"
+            class="blue-text ml-1">
+            Sign In</a></p>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Modal -->
+
+<div class="text-center">
+  <a href="" class="btn  peach-gradient btn-rounded" data-toggle="modal" data-target="#elegantModalForm">Launch Sign Up
+    Form</a>
 </div>
 {% endblock content %}

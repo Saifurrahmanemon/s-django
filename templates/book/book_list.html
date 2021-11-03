@@ -5,16 +5,45 @@
 {% block content %}
 
 {% if perms.books.special_status %}
-<h4 class="font-weight-bold"> Hi {{user.username}} you have Purchase all books</h4>
-{% else %}
-<a href="{% url 'orders' %}" class="btn btn-success waves-effect">Purchase All Books</a>
-{% endif %}
-
-{% for book in book_list %}
-
-<div>
-  <h2>
-    <a href="{{ book.get_absolute_url }}">{{book.title}}</a>
-  </h2>
+<div class="alert alert-success" role="alert" data-mdb-color="success">
+  <h4 class="alert-heading font-weight-bold border-bottom">Hi {{user.username}} you have Purchase all books!!</h4>
+  {% else %}
+  <div class="alert alert-primary align-item-center" role="alert" data-mdb-color="alert-primary">
+    <a class="font-weight-bold" href="{% url 'orders' %}">Purchase All Books</a>
+  </div>
+  {% endif %}
 </div>
-{% endfor %} {% endblock content %}
+
+
+
+<div class="container">
+  <div class="row ">
+    <div class="pb-3">
+      <div class="album py-5">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+          {% for book in book_list %}
+          <div class="col">
+            <div class="card border-0">
+              {% if book.cover %}
+              <img class="bookcover" src="{{book.cover.url}}" alt="{{book.title}}" />
+              {% endif %}
+
+              <div class="card-body px-0">
+                <p class="card-text">
+                  <a class="font-weight-bold hoverable border-bottom"
+                    href="{{ book.get_absolute_url }}">{{book.title}}</a>
+                </p>
+                <div>Author: <strong>{{book.author}}</strong></div>
+                <div class="text-muted">Price: <strong>£{{book.price}}</strong></div>
+
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock content %}

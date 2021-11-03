@@ -13,12 +13,18 @@
 <div>
   <h3>Reviews</h3>
   <ul>
+
+    {% if not book.reviews.all %}
+    no review
+    {% else %}
     {% for review in book.reviews.all %}
     <li>{{review.review}} <br>
       <p>({{review.author}})</p>
       <p>{{review.date_created}}</p>
     </li>
     {% endfor %}
+    {% endif %}
+
   </ul>
 </div>
 

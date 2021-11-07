@@ -1,31 +1,67 @@
 {% extends "_base.html" %} {% block title %}{{book.title}} {% endblock title %} {% block content %}
+<div class="text-dark text-capitalize container text-center py-5">
+  <h3 class="mb-0">{{book.title}}</h3>
+</div>
 
-<div class="book_detail">
-  {% if book.cover %}
-  <img class="bookcover" src="{{book.cover.url}}" alt="{{book.title}}" />
+<div class="container">
+  <div class="row">
+    <figure class="figure">
+      {% if book.cover %}
+      <img class="bookcover" src="{{book.cover.url}}" alt="{{book.title}}" />
+      {% endif %}
+      <figcaption class="figure-caption"><a href="">{{book.title}}</a></figcaption>
+    </figure>
+  </div>
+  <div class="mt-4">
+    <div>
+      <p><span><strong><span class="text-muted">Price: </span> ${{book.price}}</strong></span></p>
+      <p>
+        <spans>
+          <strong>
+            <span class="text-muted">Published_At:
+            </span>{{book.publication_date}}
+          </strong>
+        </spans>
+      </p>
+      <p class="font-monospace">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus libero eius fugit
+        provident, delectus eum soluta dolor minus tempore nesciunt in nam velit consectetur eaque quidem,
+        quaerat sapiente officiis cupiditate.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <h2>Reviews:</h2>
+  <a href="{% url 'create_review' book.pk %}" class="mt-4 font-weight-bold border-bottom text-muted">+Give a Review</a>
+  {% if not book.reviews.all %}
+  <br>
+  no review
+  {% else %}
+  {% for review in book.reviews.all %}
+  <div class="d-flex justify-content-right row ">
+    <div class="col-md-6">
+      <div class="bg-white border m-2 comment-section">
+        <div class="d-flex flex-row user p-2">
+          <div class="d-flex flex-column  ">
+            <span class="name font-weight-bold">{{review.author}}</span>
+            <span class="text-muted">{{review.date_created}}</span>
+          </div>
+        </div>
+        <div class="mt-2 p-2">
+          <p class="">{{review.review}}</p>
+        </div>
+        <div class="d-flex justify-content-between p-3 border-top">
+          <span>I would rate this book</span>
+          <div class="d-flex align-items-center border-left px-3 comments">
+            <span class="ml-2 font-weight-bold">{{review.rating}}/10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
   {% endif %}
-  <h2><a href="">{{book.title}}</a></h2>
-  <p>Author: {{book.author}}</p>
-  <p>Price: {{book.price}}</p>
-  <p>published_at: {{book.publication_date}}</p>
 </div>
 
-<div>
-  <h3>Reviews</h3>
-  <ul>
-
-    {% if not book.reviews.all %}
-    no review
-    {% else %}
-    {% for review in book.reviews.all %}
-    <li>{{review.review}} <br>
-      <p>({{review.author}})</p>
-      <p>{{review.date_created}}</p>
-    </li>
-    {% endfor %}
-    {% endif %}
-
-  </ul>
-</div>
 
 {% endblock content %}

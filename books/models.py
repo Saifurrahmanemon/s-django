@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.contrib.auth import get_user_model
 import uuid
 import datetime
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.urls.base import reverse_lazy
 
 
 # this is our published books model
@@ -46,7 +48,8 @@ class Review(models.Model):
         on_delete=models.CASCADE
     )
     rating = models.IntegerField(
-        blank=True, null=True, help_text='the ratings from reviewers')
+        blank=True, null=True, help_text='the ratings from reviewers',
+        validators=[MinValueValidator(0), MaxValueValidator(10)])
     date_created = models.DateTimeField(auto_now_add=True)
     date_edited = models.DateTimeField(null=True)
 

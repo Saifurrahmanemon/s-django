@@ -8,7 +8,7 @@ Search
 <h1>Search Results</h1>
 
 {% for book in book_list %}
-<div>
+<div class="flex-row">
     <h3>
         <a href="{{book.get_absolute_url}}"> {{book.title}} </a>
     </h3>

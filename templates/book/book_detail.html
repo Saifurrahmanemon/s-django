@@ -1,4 +1,9 @@
-{% extends "_base.html" %} {% block title %}{{book.title}} {% endblock title %} {% block content %}
+{% extends "_base.html" %}
+{% block title %}
+{{book.title}}
+{% endblock title %}
+{% block content %}
+
 <div class="text-dark text-capitalize container text-center py-5">
   <h3 class="mb-0">{{book.title}}</h3>
 </div>
@@ -35,7 +40,7 @@
   <a href="{% url 'create_review' book.pk %}" class="mt-4 font-weight-bold border-bottom text-muted">+Give a Review</a>
   {% if not book.reviews.all %}
   <br>
-  no review
+  <p class="mb-2">no review</p>
   {% else %}
   {% for review in book.reviews.all %}
   <div class="d-flex justify-content-right row ">

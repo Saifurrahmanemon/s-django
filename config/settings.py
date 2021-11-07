@@ -46,9 +46,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.github',
-    'allauth.socialaccount.providers.twitter',
+    # 'allauth.socialaccount.providers.google',
+    # 'allauth.socialaccount.providers.github',
+    # 'allauth.socialaccount.providers.twitter',
     'crispy_forms',
     'debug_toolbar',
     # localapps

@@ -1,5 +1,5 @@
-#Django Bookstore. <br>
-Production Ready E-commerce app, Stripe Payment method is currently in Test Mode. You can user the Repo if you want or any template's design.
+#Django Bookstore. <br> <br>
+Production Ready E-commerce app. Stripe Payment method is currently in Test Mode. You can user the Repo if you want or any template's design.
 
 check it out here - https://d-bookstoree.herokuapp.com/
 
@@ -11,13 +11,13 @@ check it out here - https://d-bookstoree.herokuapp.com/
 
 
 # how to use
-fork the repo then clone it on your local machine after that all the dependencies that are mentioned in requirements.txt file.
+fork the repo then clone it on your local machine after that all the dependencies that are mentioned in requirements.txt file. <br>
 Create a .env file and add the keys.
 DEBUG,<br/>
-SECRET_KEY,
-STRIPE_TEST_PUBLISHABLE_KEY
-STRIPE_TEST_SECRET_KEY,
-ENVIRONMENT
+SECRET_KEY, <br>
+STRIPE_TEST_PUBLISHABLE_KEY, <br>
+STRIPE_TEST_SECRET_KEY,<br>
+ENVIRONMENT<br>
 
 # Contribution
 Please feel free to contribute to this peoject.

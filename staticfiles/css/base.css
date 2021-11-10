@@ -1,0 +1,5 @@
+.bookcover {
+  height: 100%;
+  width: 15vw;
+  object-fit: cover;
+}

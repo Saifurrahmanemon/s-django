@@ -11,8 +11,8 @@ check it out here - https://d-bookstoree.herokuapp.com/
 
 
 # how to use
-fork the repo then clone it on your local machine after that all the dependencies that are mentioned in requirements.txt file. <br>
-Create a .env file and add the keys.
+fork the repo then clone it on your local machine after that all install the dependencies that are mentioned in requirements.txt file. <br>
+Create a .env file and add the following keys.
 DEBUG,<br/>
 SECRET_KEY, <br>
 STRIPE_TEST_PUBLISHABLE_KEY, <br>

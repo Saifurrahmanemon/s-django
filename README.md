@@ -1,5 +1,5 @@
 #Django Bookstore. <br> <br>
-Production Ready E-commerce app. Stripe Payment method is currently in Test Mode. You can user the Repo if you want or any template's design.
+Production Ready E-commerce app. Stripe Payment method is currently in Test Mode. You can use the Repo if you want or any template's design.
 
 check it out here - https://d-bookstoree.herokuapp.com/
 
